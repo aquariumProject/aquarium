@@ -36,10 +36,10 @@ const Login = () => {
   // JWT로 유저 인증 방식, 제대로 작동하지 않을 수도 있음
   const signIn = () => {
     const data = {
-      userid : id,
-      userpw : pw,
+      email : id,
+      password : pw,
     };
-    axios.post('타겟 URL', data)
+    axios.post('http://127.0.0.1:8000/members/login/', data)
     .then(response => {
       const { accessToken } = response.data;
 
