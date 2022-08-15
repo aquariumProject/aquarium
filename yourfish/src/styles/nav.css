@@ -1,0 +1,226 @@
+/* 상단 네비게이션 바 CSS */
+.header {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    /* z-index는 다른 요소랑 겹쳤을 때 상대적으로 높게 보이도록 하기 위함 */
+    z-index: 20;
+    overflow-x: hidden;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.header__title {
+    width: 230px;
+    height: 45px;
+    /* width: 16%; */
+    /* 5:1비율을 주었음 */
+    /* aspect-ratio: 5/1; */
+}
+
+
+.header__center {
+    width: 20%;
+    height: 30%;
+    margin-bottom: 10px;
+}
+
+.header__form {
+    /* display flex는 검색창과 검색버튼을 붙이기 위해 사용함 */
+    /* 따라가는 상태 구현 끝 */
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.header__input--text {
+    width: 84%;
+    height: 40px;
+    padding: 0 6px;
+    border: 1px solid black;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    outline: none;
+}
+
+.header__input--button {
+    width: 30px;
+}
+
+.header__end {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header li {
+    list-style: none;
+}
+
+/* 네비 상단 버튼 공통 CSS */
+.header__end--btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: "SeoulNamsanM";
+    font-size: 18px;
+    padding: 10px 15px;
+    margin: 20px;
+    outline: none;
+}
+
+/* 스토어 & 질문게시판 */
+.header__end--btn:after {/*after 가상요소*/
+    display:block;/*a요소를 블록 요소라고 선언*/
+    content: '';/*comtent안은 밑줄 디자인을 위해 비워두세요.*/
+    border-bottom: solid 1px black;
+    transform: scaleX(0);/*크기를 0으로 줌으로써 평상시엔 밑줄 없음*/
+    transition: transform 250ms ease-in-out; /*변형 방식*/
+ }
+ .header__end--btn:hover:after {
+    transform: scaleX(1);/*a 속성에 hover시 after를 기존 크기로 변경*/
+ }
+
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    padding: 10px 15px;
+    border: 1px solid #000;
+    font-family: 'SeoulNamsanM';
+    font-size: 18px;
+    border-radius: 7px;
+    /* font-weight: 500; */
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+/* 로그인 버튼 CSS */
+.login {
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  .login:after {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+    -webkit-transform: scale(.1);
+    transform: scale(.1);
+  }
+  .login:hover {
+    color: #fff;
+  }
+  .login:hover:after {
+    background: #000;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+/* 회원가입 버튼 CSS */
+.register {
+  background: #000;
+   color: #fff;
+   line-height: 42px;
+   padding: 0;
+   border: none;
+ }
+ .register span {
+   position: relative;
+   display: block;
+   width: 100%;
+   height: 100%;
+ }
+ .register:before,
+ .register:after {
+   position: absolute;
+   content: "";
+   height: 0%;
+   width: 2px;
+   background: #000;
+ }
+ .register:before {
+   right: 0;
+   top: 0;
+   transition: all 500ms ease;
+ }
+ .register:after {
+   left: 0;
+   bottom: 0;
+   transition: all 500ms ease;
+ }
+ .register:hover{
+   color: #000;
+   background: transparent;
+ }
+ .register:hover:before {
+   transition: all 500ms ease;
+   height: 100%;
+ }
+ .register:hover:after {
+   transition: all 500ms ease;
+   height: 100%;
+ }
+ .register span:before,
+ .register span:after {
+   position: absolute;
+   content: "";
+   background: #000;
+ }
+ .register span:before {
+   left: 0;
+   top: 0;
+   width: 0%;
+   height: 2px;
+   transition: all 500ms ease;
+ }
+ .register span:after {
+   right: 0;
+   bottom: 0;
+   width: 0%;
+   height: 2px;
+   transition: all 500ms ease;
+ }
+ .register span:hover:before {
+   width: 100%;
+ }
+ .register span:hover:after {
+   width: 100%;
+ }
+ 
+ @font-face {
+  font-family: 'SeoulNamsanM';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+ /* 너비가 좀 줄어들면 검색창 사라짐 */
+ @media screen and (max-width: 1200px) {
+    .header__center {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .header__end--btn {
+        display: none;
+    }
+} 

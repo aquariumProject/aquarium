@@ -1,0 +1,7 @@
+/* 그냥 기본적인 각 페이지 베이스, 추후 변경 가능 */
+section {
+    width: 100%;
+    height: 500px;
+    background-color: #EAFCFF;
+    margin-top: 90px;
+}

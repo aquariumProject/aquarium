@@ -1,0 +1,69 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "리덕스 미들웨어를 배워봅시다",
+      "body": "리덕스 미들웨어를 직접 만들어보면 이해하기 쉽죠."
+    },
+    {
+      "id": 2,
+      "title": "redux-thunk를 사용해봅시다",
+      "body": "redux-thunk를 사용해서 비동기 작업을 처리해봅시다!"
+    },
+    {
+      "id": 3,
+      "title": "redux-saga도 사용해봅시다",
+      "body": "나중엔 redux-saga를 사용해서 비동기 작업을 처리하는 방법도 배워볼 거예요."
+    },
+    {
+      "userid": "kimkim@naver.com",
+      "userpw": "kimkim123!",
+      "username": "김김김",
+      "userNickname": "김밥먹고싶다",
+      "id": 4 
+    },
+    {
+      "userid": "yourfish@naver.com",
+      "userpw": "fishfish1!",
+      "username": "너의반려어는",
+      "userNickname": "김밥좋아",
+      "id": 5
+    },
+    {
+      "userid": "yourfish1@naver.com",
+      "userpw": "fishfish2@",
+      "username": "너의반려어는2",
+      "userNickname": "김밥좋아요",
+      "id": 6
+    },
+    {
+      "userid": "rktdnjs@naver.com",
+      "userpw": "fgiom5014@",
+      "username": "김김김",
+      "userNickname": "김김김김김",
+      "id": 7
+    },
+    {
+      "userid": "rktdnjs@naver.com",
+      "userpw": "fgiom5014@",
+      "username": "김김김",
+      "userNickname": "김김김김김",
+      "id": 8
+    },
+    {
+      "userid": "rktdnjs@naver.com",
+      "userpw": "fgiom5014@",
+      "username": "김김김",
+      "userNickname": "김김김김김",
+      "id": 9
+    },
+    {
+      "Email": "yourfish@naver.com",
+      "Password": "yourfish1!",
+      "Password1": "yourfish1!",
+      "Username": "김김김",
+      "Nickname": "김김김김김",
+      "id": 10
+    }
+  ]
+}
