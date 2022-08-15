@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('members/', include('members.urls')),
     path('store/', include('store.urls')),
+    path('feed/', include('feed.urls')),
+    path('api_auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

@@ -42,7 +42,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email'],
             nickname=validated_data['nickname'],
-
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -57,9 +56,17 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = authenticate(**data)
+        print("validate user")
+        print(user)
         if user:
+            # username = Token.objects.get(username=username)
+            # password = Token.objects.get(password=password)
             token = Token.objects.get(user=user)
+            print("views token")
+            print(token)
             return token
+            # userdata = {"user" : user}
+            # return userdata
         
         raise serializers.ValidationError(
             {"error": "Wrong access"}
