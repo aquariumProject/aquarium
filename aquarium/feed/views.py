@@ -25,33 +25,41 @@ class FeedCreate(generics.CreateAPIView):
         serializer.save()
 
 
-# feed 글 목록 보기(post 방식)
+# feed 글 목록 보기(get 방식)
 class FeedList(generics.ListCreateAPIView):
+    queryset = Feed.objects.all()
+    serializer_class = FeedSerializer
+    permission_classes = [
+        IsAuthenticated,
+    ]
+
+
+# feed 글 내용 보기(post 방식)
+class FeedDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Feed.objects.all()
     serializer_class = FeedSerializer
     permission_classes = [
         AllowAny,
     ]
 
+    # 수정
+    # def put(self, request, pk, format=None):
+    #     feed = self.get_object(pk)
+    #     serializer = FeedSerializer(feed, data=request.data) 
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data) 
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# feed 글 내용 보기(get 방식)
-class FeedDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Feed.objects.all()
-    serializer_class = FeedSerializer
-    permission_classes = [
-        IsAuthorOrReadonly,
-    ]
 
-    # def likes(request, feed_code):
-    #     if request.user.is_authenticated:
-    #         feed = get_object_or_404(Feed, pk=feed_code)
+    # # 삭제
+    # def delete(self, request, pk, format=None):
+    #     print("****************************")
+    #     print(self.get_object(pk))
+    #     feed = self.get_object(pk)
+    #     feed.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)    
 
-    #         if feed.like_users.filter(pk=request.user.pk).exists():
-    #             feed.like_users.remove(request.user)
-    #             return JsonResponse({'message': 'success'}, status=200)
-    #         else:
-    #             feed.like_users.add(request.user)
-    #             return JsonResponse({'message': 'failed'}, status=200)
 
 class FeedLikes(generics.RetrieveUpdateDestroyAPIView):
     queryset = Feed.objects.all()

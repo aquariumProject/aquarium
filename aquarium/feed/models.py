@@ -7,7 +7,7 @@ class Feed(models.Model):
     member_id = models.CharField(max_length=20)
     feed_title = models.CharField(max_length=50)
     feed_content = models.TextField()
-    feed_pic = models.ImageField(null=True, upload_to='', blank=True)
+    feed_pic = models.ImageField(null=True, upload_to='uploads', blank=True)
     feed_date = models.DateTimeField(auto_now_add=True)
     feed_like = models.ManyToManyField(User, related_name='likes', blank=True, default=0)
     feed_like = models.IntegerField(default=0)
