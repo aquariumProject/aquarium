@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
-from feed.serializers import FeedSerializer, PostLikeSerializer
+from feed.serializers import FeedSerializer, PostLikeSerializer, ReplySerializer
 from members.models import User
-from feed.models import Feed
+from feed.models import Feed, Reply
 from members.permission import *
 from django.http  import JsonResponse
 
@@ -21,7 +21,7 @@ class FeedCreate(generics.CreateAPIView):
 
    	# serializer.save() 재정의
     def perform_create(self, serializer):
-        serializer.save(user = self.request.user)
+        serializer.save(member_id = self.request.member_id)
         serializer.save()
 
 
@@ -34,13 +34,20 @@ class FeedList(generics.ListCreateAPIView):
     ]
 
 
-# feed 글 내용 보기(post 방식)
+# feed 글 내용 보기, 수정, 삭제(post 방식)
 class FeedDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Feed.objects.all()
     serializer_class = FeedSerializer
     permission_classes = [
         AllowAny,
     ]
+
+    def get(self, request, pk):
+        feed = Feed.objects.get(feed_code=pk)
+        feed.feed_hit += 1
+        feed.save()
+        return Response(status=status.HTTP_200_OK)
+
 
     # 수정
     # def put(self, request, pk, format=None):
@@ -99,3 +106,25 @@ class PostLikesAPIView(generics.UpdateAPIView):
             instance._prefeched_objects_cache = {}
 
         return Response(serializer.data)
+
+
+# 댓글 관련
+class ReplyAPIView(generics.CreateAPIView):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
+
+    permission_classes = [
+        IsAuthenticated,
+    ]
+
+    def perform_create(self, serializer):
+        #serializer.save(user = self.request.user)
+        serializer.save()
+
+class ReplyDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
+
+    permission_classes = [
+        IsAuthorOrReadonly,
+    ]
