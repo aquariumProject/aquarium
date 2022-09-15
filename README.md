@@ -52,6 +52,7 @@
 <br>
 
 ## 서비스 아키텍쳐
+![image](https://user-images.githubusercontent.com/110291483/190476560-50d403cd-ff11-455d-b734-408d207ae23a.png)
 
 <br>
 <br>
