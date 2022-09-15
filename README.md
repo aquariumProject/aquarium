@@ -60,6 +60,11 @@
 ![image](https://user-images.githubusercontent.com/110291483/190473996-00a67397-5965-4d67-8618-3f71307fa358.png)
 
 <br>
+
+- member : 회원가입 시 저장되는 정보
+- board : feed에 노출되는 게시글에 대한 정보
+
+<br>
 <br>
 
 ## 주요 기능
